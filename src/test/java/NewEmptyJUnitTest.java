@@ -22,13 +22,7 @@ import org.apache.http.Header;
 import org.apache.http.HttpEntity; 
 import org.apache.http.HttpResponse; 
 import org.apache.http.StatusLine;
-import org.apache.http.client.methods.HttpPost; 
-import org.apache.http.impl.client.DefaultHttpClient; 
-import org.apache.http.client.HttpClient; 
-/**
- *
- * @author alex
- */
+
 public class NewEmptyJUnitTest {
     
     public NewEmptyJUnitTest() {
