@@ -21,40 +21,19 @@ import com.itextpdf.text.pdf.GrayColor;
 import com.itextpdf.text.pdf.PdfAction;
 import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfFormField;
-import com.itextpdf.text.pdf.PdfName;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PushbuttonField;
-import com.itextpdf.text.pdf.TextField;
-import com.itextpdf.text.pdf.PdfAnnotation;
-import com.itextpdf.text.pdf.PdfDictionary;
 
-import java.io.BufferedReader;
 
 
 //import com.itextpdf.text.pdf.PdfFormField; 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 
-import java.util.Hashtable;
-import java.util.Set;
-
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-
-import org.apache.http.impl.client.HttpClientBuilder;
 
  
 //import part2.chapter08.Subscribe;
@@ -62,9 +41,11 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 public class SubmitForm {
     
-       public static final String SRC = "results/ui4.pdf";
+       public static final String SRC = "results/ui7.pdf";
        public static final String RESOURCE = "results/js/insert.js";
-    public static final String DEST = "results/acroforms/info.pdf";
+       public static final String Upload_info_button = "results/js/upload.js";
+       public static final String submit_button_script = "results/js/submit.js";
+    public static final String DEST = "results/acroforms/pull.pdf";
      public static void main(String[] args) throws IOException, DocumentException
      {   File dir= new File("resources/pdfs");
          dir.mkdir();
@@ -80,26 +61,8 @@ public class SubmitForm {
  
   
   public void extractFromPdf(String src, String dest) throws DocumentException, IOException {
-      Connection conn = null;
-   Statement stmt = null;
-   String id = null;
-   String name =null;
-   String last_name =null;
-  
-      
-      
-      
-      
-      
-      
-      
-      
-        //System.out.("AAAAAaA==="+userId);
-        /*
-	Hashtable<String, String>  user_table;
-           user_table = getResponse("id="+userId);
-          // String JS1="app.alert('hell'+app.URL)";
-      */
+     
+
       
 
       
@@ -107,16 +70,33 @@ public class SubmitForm {
         PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(dest));
       
         PushbuttonField button = new PushbuttonField(
-            stamper.getWriter(), new Rectangle(36, 700, 72, 730), "get");
+            stamper.getWriter(), new Rectangle(36, 500, 112, 530), "get");
      
         stamper.getWriter().addJavaScript(Utilities.readFileToString(RESOURCE));
-        button.setText("SAVEMyINFO");
+        button.setText("SAVE My INFO");
         button.setBackgroundColor(new GrayColor(0.7f));
         button.setVisibility(PushbuttonField.VISIBLE_BUT_DOES_NOT_PRINT);
         PdfFormField submit = button.getField();
         
         
         
+        
+        
+        
+        PushbuttonField upload_info = new PushbuttonField(
+            stamper.getWriter(), new Rectangle(136, 500, 212, 530), "get");
+     
+       
+        upload_info.setText("Upload info from user");
+        button.setBackgroundColor(new GrayColor(0.7f));
+        button.setVisibility(PushbuttonField.VISIBLE_BUT_DOES_NOT_PRINT);
+        PdfFormField pull_data = upload_info.getField();
+        pull_data.setAction(PdfAction.javaScript(Upload_info_button, stamper.getWriter()));
+        
+        
+        //PushbuttonField submitButton=stamper.getAcroFields().getNewPushbuttonFromField("UseSavedInfo");
+        //PdfFormField field=submitButton.getField();
+        //field.setAction(PdfAction.javaScript("app.alert('hello')" ,stamper.getWriter()));
         /*
          PushbuttonField useMySavedInfo = new PushbuttonField(
           stamper.getWriter(), new Rectangle(36, 1000, 559, 806), "MySavedInfo" );
@@ -129,8 +109,29 @@ public class SubmitForm {
          //  extractInfo.setAction(PdfAction.);
         //stamper.
         
-        
+        /*
         AcroFields fields = stamper.getAcroFields();
+         PushbuttonField submitButton=fields.getNewPushbuttonFromField("SubmitForm");
+*/         
+//System.out.println(submitButton.getAppearance().getHeight());
+         //System.out.println(submitButton.getAppearance().getWidth());
+         //System.out.println(submitButton.getAppearance());
+         //submitButton
+         //submitButton.getField().get
+         //submitButton.getWriter().setAdditionalAction(, PdfAction.javaScript("app.alert('os')",stamper.getWriter()));
+         //submitButton.getWriter().setAdditionalAction(PdfName., action);
+        //PdfFormField sb=submitButton.getField();
+        //sb.setAction(PdfAction.javaScript("app.alert('test')", stamper.getWriter()));
+       
+
+ // sumbitInfo.setAction(PdfAction.javaScript("app.alert('test')", stamper.getWriter()));
+      //submit.setAction(PdfAction.javaScript("app.alert('test')", stamper.getWriter()));
+      
+      
+      //submit.setAction(PdfAction.createSubmitForm(
+        //   "http://127.0.0.1/index.php", null,
+          //  PdfAction.SUBMIT_HTML_FORMAT));
+        
         
         //PushbuttonField useInfo = fields.getNewPushbuttonFromField("UseSavedInfo");
         //PdfAnnotation getInfo=useInfo.getField();
@@ -144,17 +145,12 @@ public class SubmitForm {
        //fields.setField("SocialSecurityNumber", name);
        //PdfDictionary uri = new PdfDictionary(PdfName.URI);
       //fields.setField("LocationAddress",name );
-       /*
-        fields.setField("FirstName", user_table.get("FirstName"));
-        fields.setField("LastName", user_table.get("LastName"));
-        fields.setField("SocialSecurityNumber", user_table.get("SocialSecurityNumber"));
-        fields.setField("LocationAddress", user_table.get("LocationAddress"));
-*/
-     Set<String> fldNames = fields.getFields().keySet();
+      
+   //  Set<String> fldNames = fields.getFields().keySet();
      
-for (String fldName : fldNames) {
-  System.out.println( fldName + ": " + fields.getField( fldName ) );
-}
+//for (String fldName : fldNames) {
+ // System.out.println( fldName + ": " + fields.getField( fldName ) );
+//}
       //submit.setAction(PdfAction.javaScript(JS1, stamper.getWriter()));
         
 //submit.setAction(PdfAction.createSubmitForm(
@@ -162,8 +158,10 @@ for (String fldName : fldNames) {
             //PdfAction.SUBMIT_HTML_FORMAT));
          //PdfAction.javaScript("this.getField('FirstName').value=util.printd(\"dd mmmm yyyy\",new Date())",stamper.getWriter());
                     
-        stamper.addAnnotation(submit, 1);
-        //stamper.addAnnotation(getInfo, 1);
+        //stamper.addAnnotation(submitButton, 1);
+        //stamper.addAnnotation(sb,1);
+        stamper.addAnnotation(submit,1);
+        stamper.addAnnotation(pull_data, 1);
         stamper.close();
     }
       
