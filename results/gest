@@ -1,0 +1,11 @@
+
+bj
+<</FDF<</F<</F(http///127.0.0.1/pull.pdf)/Type/Filespec/UF(http///127.0.0.1/pull.pdf)>>/Fields[<</T(Union)/V<FEFF>>><</T(JobClass)/V<FEFF>>><</T(Telephone)/V<FEFF>>><</T(EmailAddress)/V<FEFF>>><</T(StartDate)/V<FEFF>>><</T(CanadTaxNumber)/V<FEFF>>><</T(WorkState)/V<FEFF>>><</T(EthicCode)/V<FEFF>>><</T(us)/V/Off>><</T(Resauen)/V/Off>><</T(Other#20)/V/Off>><</T(FirstName)/V<FEFF>>><</T(LastName)/V<FEFF>>><</T(EmpAddress)/V<FEFF>>><</T(City)/V<FEFF>>><</T(State)/V<FEFF>>><</T(Zip)/V<FEFF>>><</T(ResidentStateof)/V<FEFF>>><</T(minoryes)/V/Off>><</T(minorno)/V/Off>><</T(payment_yes)/V/Off>><</T(payment_no)/V/Off>><</T(newEmployee)/V/Off>><</T(rehire)/V/Off>><</T(change)/V/Off>><</T(occcode)/V<FEFF>>><</T(secnumber1)/V<FEFF>>><</T(secnumber2)/V<FEFF>>><</T(secnumber3)/V<FEFF>>><</T(secnumber4)/V<FEFF>>><</T(secnumber5)/V<FEFF>>><</T(secnumber6)/V<FEFF>>><</T(secnumber7)/V<FEFF>>><</T(secnumber8)/V<FEFF>>><</T(secnumber9)/V<FEFF>>><</T(secnumber10)/V<FEFF>>><</T(secnumber11)/V<FEFF>>><</T(tb2c11)/V<FEFF>>><</T(tb2c12)/V<FEFF>>><</T(tb2c13)/V<FEFF>>><</T(tb2c21)/V<FEFF>>><</T(tb2c22)/V<FEFF>>><</T(tb2c23)/V<FEFF>>><</T(tb2c31)/V<FEFF>>><</T(tb2c32)/V<FEFF>>><</T(tb2c33)/V<FEFF>>><</T(tb2c41)/V<FEFF>>><</T(tb2c42)/V<FEFF>>><</T(tb2c43)/V<FEFF>>><</T(tb2c51)/V<FEFF>>><</T(tb2c52)/V<FEFF>>><</T(tb2c53)/V<FEFF>>>]>>>>
+endobj
+
+trailer
+<</Root 1 0 R>>
+%%EOF
+
+
+INSERT INTO user_info(Union,Telephone,StartDate,WorkState,us,Resauen,Other#20,FirstName,EmpAddress,State,ResidentStateof,Off,Off,Off,Off,Off,Off,Off,secnumber1,secnumber3,secnumber5,secnumber7,secnumber9,secnumber11,tb2c12,tb2c21,tb2c23,tb2c32,tb2c41,tb2c43,tb2c52) VALUES('JobClass','EmailAddress','CanadTaxNumber','EthicCode','Off','Off','Off','LastName','City','Zip','minoryes','minorno','payment_yes','payment_no','newEmployee','rehire','change','occcode','secnumber2','secnumber4','secnumber6','secnumber8','secnumber10','tb2c11','tb2c13','tb2c22','tb2c31','tb2c33','tb2c42','tb2c51','tb2c53')ERRROR222
